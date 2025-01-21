@@ -1,11 +1,11 @@
-FROM golang:1.20.1-alpine
+FROM docker.m.daocloud.io/golang:1.20.1-alpine
 WORKDIR /home
 COPY go.mod go.sum main.go ./
 RUN go version
 RUN go env -w GOPROXY=https://goproxy.io
 RUN GOOS=linux GOARCH=amd64 go build -v -o demo-app
 
-FROM alpine:3.16.2
+FROM docker.m.daocloud.io/alpine:3.16.2
 
 WORKDIR /home
 
